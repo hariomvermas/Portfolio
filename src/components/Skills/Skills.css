@@ -1,0 +1,62 @@
+.skills { border-top: 1px solid var(--color-border); }
+
+.skills__heading {
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+  font-weight: 600;
+  margin-bottom: var(--space-12);
+  letter-spacing: -0.02em;
+}
+
+.skills__groups {
+  display: grid;
+  /* 240px min so it fits in a 296px content area at 360px */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-6);
+}
+
+.skills__group {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: border-color var(--transition-base);
+}
+.skills__group:hover { border-color: color-mix(in srgb, var(--color-accent) 40%, transparent); }
+
+.skills__group-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-4);
+}
+
+.skills__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.skills__chip {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  /* Enough vertical padding for comfortable touch */
+  padding: var(--space-2) var(--space-3);
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  cursor: default;
+}
+.skills__chip:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: var(--color-accent-glow);
+}
+
+@media (max-width: 480px) {
+  .skills__heading { margin-bottom: var(--space-8); }
+  .skills__groups { gap: var(--space-4); }
+}

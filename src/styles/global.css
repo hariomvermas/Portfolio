@@ -1,0 +1,229 @@
+/* ─── Google Fonts are loaded in index.html ─── */
+
+/* ─── CSS Custom Properties ─── */
+:root {
+  /* Palette — dark theme (default) */
+  --color-bg:          #0d0d0d;
+  --color-bg-surface:  #141414;
+  --color-bg-elevated: #1a1a1a;
+  --color-border:      #2a2a2a;
+
+  --color-text:        #f0e6d3;   /* warm cream */
+  --color-text-muted:  #8a7f72;
+  --color-text-faint:  #4a4540;
+
+  --color-accent:      #f5a623;   /* warm amber */
+  --color-accent-dim:  #c47d0e;
+  --color-accent-glow: rgba(245, 166, 35, 0.15);
+
+  /* Fonts */
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body:    system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Type scale */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+  --text-6xl:  3.75rem;
+
+  /* Spacing scale */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Layout */
+  --max-width:       1100px;
+  /* Responsive section padding — overridden at mobile below */
+  --section-padding: var(--space-24) var(--space-6);
+
+  /* Borders & radius */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 0 24px var(--color-accent-glow);
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* Z-index layers */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-nav:     200;
+  --z-modal:   300;
+
+  /* Minimum tap target */
+  --tap-min: 44px;
+}
+
+/* ─── Light theme ─── */
+[data-theme='light'] {
+  --color-bg:          #faf7f2;
+  --color-bg-surface:  #f2ede4;
+  --color-bg-elevated: #ebe4d8;
+  --color-border:      #d4c9b8;
+
+  --color-text:        #1a1612;
+  --color-text-muted:  #6b5f52;
+  --color-text-faint:  #a89880;
+
+  --color-accent:      #c47d0e;
+  --color-accent-dim:  #9a6008;
+  --color-accent-glow: rgba(196, 125, 14, 0.12);
+
+  --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal overflow at any width */
+  overflow-x: hidden;
+}
+
+/* ─── Respect prefers-reduced-motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Typography helpers ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Focus ring for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ─── Utility classes ─── */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.section {
+  padding: var(--section-padding);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.app {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+}
+
+/* ─── Responsive overrides ─── */
+
+/* 768px — tablet */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: var(--space-16) var(--space-5);
+  }
+}
+
+/* 480px — large phone */
+@media (max-width: 480px) {
+  :root {
+    --section-padding: var(--space-12) var(--space-4);
+  }
+  .container {
+    padding-inline: var(--space-4);
+  }
+}
+
+/* 360px — small phone */
+@media (max-width: 390px) {
+  :root {
+    --section-padding: var(--space-10) var(--space-4);
+  }
+  .container {
+    padding-inline: var(--space-4);
+  }
+}

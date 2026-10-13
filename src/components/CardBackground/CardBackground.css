@@ -1,0 +1,113 @@
+/* ─── Container ─── */
+.card-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;          /* behind everything */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ─── Dark radial vignette ───────────────────────────────────────
+   Darkest at the edges, transparent at centre.
+   Sits on top of the cards so text sections stay readable.        */
+.card-bg__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    transparent 30%,
+    rgba(0, 0, 0, 0.55) 75%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Individual card wrapper ─── */
+.card-bg__card {
+  position: absolute;
+  width: var(--card-width);
+
+  /* Start position — placed via CSS custom props set in JS */
+  transform:
+    translate(var(--card-start-x), var(--card-start-y))
+    rotate(var(--card-tilt));
+
+  opacity: var(--card-opacity);
+  filter:
+    blur(var(--card-blur))
+    saturate(var(--card-saturate))
+    brightness(0.75);
+
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  will-change: transform;
+
+  /* Three layered animations: drift + bob + wobble */
+  animation:
+    card-drift   var(--card-duration)   linear          var(--card-delay) infinite,
+    card-bob     var(--bob-period)      ease-in-out     var(--card-delay) infinite alternate,
+    card-wobble  var(--wobble-period)   ease-in-out     var(--card-delay) infinite alternate;
+}
+
+.card-bg__card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  /* Prevent browser from painting img outside its container */
+  object-fit: contain;
+}
+
+/* ─── Drift keyframe ─────────────────────────────────────────────
+   Moves bottom-left → top-right diagonally.
+   Using translate() so the compositor handles it — no layout cost.
+   The card starts at (startX, startY) and travels ~160vw left and
+   ~160vh up, then snaps back to start for a seamless loop.         */
+@keyframes card-drift {
+  0% {
+    transform:
+      translate(var(--card-start-x), var(--card-start-y))
+      rotate(var(--card-tilt));
+  }
+  100% {
+    transform:
+      translate(
+        calc(var(--card-start-x) + 160vw),
+        calc(var(--card-start-y) - 160vh)
+      )
+      rotate(var(--card-tilt));
+  }
+}
+
+/* ─── Bob keyframe (vertical float) ─── */
+@keyframes card-bob {
+  from { translate: 0 0; }
+  to   { translate: 0 var(--bob-amplitude); }
+}
+
+/* ─── Wobble keyframe (slow rotation) ─── */
+@keyframes card-wobble {
+  from { rotate: calc(var(--card-tilt) - var(--wobble-amp)); }
+  to   { rotate: calc(var(--card-tilt) + var(--wobble-amp)); }
+}
+
+/* ─── Mobile: hide the 3 marked cards, show only 3 ─── */
+@media (max-width: 768px) {
+  .card-bg__card--mobile-hide {
+    display: none;
+  }
+}
+
+/* ─── prefers-reduced-motion: static, dimmer, no animation ─── */
+@media (prefers-reduced-motion: reduce) {
+  .card-bg__card {
+    animation: none;
+    /* Slightly dimmer when static so they feel more like texture */
+    opacity: calc(var(--card-opacity) * 0.6);
+    filter:
+      blur(var(--card-blur))
+      saturate(calc(var(--card-saturate) * 0.7))
+      brightness(0.6);
+  }
+}
