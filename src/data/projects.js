@@ -9,7 +9,7 @@ const projects = [
       'Secure media-sharing platform where creators upload premium content, manage media and control user access.',
     tech: ['Java', 'Spring Boot', 'MySQL', 'React Native', 'REST APIs'],
     highlights: ['CRUD operations', 'File upload', 'Authentication', 'RESTful APIs'],
-    githubUrl: '', // TODO: add GitHub repo URL
+    githubUrl: 'https://github.com/hariomvermas/Paid-Media-Locker', // TODO: add GitHub repo URL
     liveUrl: '',  // TODO: add live demo URL if available
   },
   {
@@ -38,8 +38,8 @@ const projects = [
     description: 'Responsive weather application built during IBM-NASSCOM PBEL 3.0 internship.',
     tech: ['HTML', 'CSS', 'JavaScript'],
     highlights: ['Built during IBM-NASSCOM PBEL 3.0'],
-    githubUrl: '', // TODO: add GitHub repo URL
-    liveUrl: '',  // TODO: add live demo URL if available
+    githubUrl: 'https://github.com/hariomvermas/Weather-App', // TODO: add GitHub repo URL
+    liveUrl: 'https://weather-app-hariom10.vercel.app/',  // TODO: add live demo URL if available
   },
 ]
 
