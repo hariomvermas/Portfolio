@@ -38,7 +38,7 @@ npm run preview    # preview the production build locally
 | `src/data/projects.js` | `githubUrl` × 4 | Each project's GitHub repo URL |
 | `src/data/projects.js` | `liveUrl` × 4 | Live demo URL (leave `""` to hide button) |
 | `src/data/certificates.js` | `link` × 9 | Each certificate's validation URL (leave `""` to hide View button) |
-| `index.html` | canonical + og:url + og:image + twitter:image | Replace `hariomverma.dev` with your actual deployed domain |
+| `index.html` | canonical + og:url + og:image + twitter:image | Currently set to the Vercel URL. Update all four if you move to a custom domain |
 
 ## Connecting to Spring Boot later
 

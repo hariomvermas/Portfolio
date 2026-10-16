@@ -63,7 +63,16 @@ function ProjectCard({ project, index }) {
             {toEndpoint(project.id)}
           </span>
         </div>
-        <h3 className="project-card__title">{project.title}</h3>
+        <div className="project-card__main">
+          <h3 className="project-card__title">{project.title}</h3>
+          {project.highlights?.length > 0 && (
+            <ul className="project-card__highlights" role="list" aria-label="Highlights">
+              {project.highlights.map(h => (
+                <li key={h} className="project-card__highlight">{h}</li>
+              ))}
+            </ul>
+          )}
+        </div>
         {/* Arrow hint — fades out on hover */}
         <span className="project-card__hint" aria-hidden="true">
           <FiArrowUpRight size={16} />

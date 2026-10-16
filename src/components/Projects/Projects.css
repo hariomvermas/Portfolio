@@ -90,6 +90,31 @@
   overflow: hidden;
 }
 
+/* Title + highlights sit together between the top row and the arrow hint */
+.project-card__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.project-card__highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.project-card__highlight {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+.project-card__highlight::before {
+  content: '› ';
+  color: var(--color-accent);
+}
+
 .project-card__hint {
   color: var(--color-text-faint);
   align-self: flex-end;
