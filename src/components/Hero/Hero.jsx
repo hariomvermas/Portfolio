@@ -13,17 +13,17 @@ function useTypewriter(text, startDelay = 0, speed = 55, skip = false) {
 
   useEffect(() => {
     if (skip) { setDisplayed(text); setDone(true); return }
-    let timeout
-    timeout = setTimeout(() => {
+    let interval
+    const timeout = setTimeout(() => {
       let i = 0
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         i++
         setDisplayed(text.slice(0, i))
         if (i >= text.length) { clearInterval(interval); setDone(true) }
       }, speed)
-      return () => clearInterval(interval)
     }, startDelay)
-    return () => clearTimeout(timeout)
+    // Cleanup must clear BOTH the timeout and the interval it may have started
+    return () => { clearTimeout(timeout); clearInterval(interval) }
   }, [text, startDelay, speed, skip])
 
   return { displayed, done }
@@ -40,8 +40,8 @@ const fadeUp = {
 
 export default function Hero() {
   const prefersReduced = useReducedMotion()
-  const { displayed: typedCmd, done: cmdDone } = useTypewriter('GET /hariom', 400, 55, prefersReduced)
-  const { displayed: typedStatus }             = useTypewriter(STATUS, cmdDone ? (prefersReduced ? 0 : 900) : 99999, 55, prefersReduced)
+  const { displayed: typedCmd, done: cmdDone } = useTypewriter('GET /hariom', 150, 35, prefersReduced)
+  const { displayed: typedStatus }             = useTypewriter(STATUS, cmdDone ? (prefersReduced ? 0 : 250) : 99999, 35, prefersReduced)
   const showContent = typedStatus.length > 0
 
   const scrollToProjects = () =>

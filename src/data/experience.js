@@ -8,7 +8,7 @@ const experience = [
     endDate: 'Jan 2027',
     duration: '3 months',
     description:
-      'Worked on Core Java, OOP, JDBC, Spring Boot, REST APIs and MySQL in a professional remote environment.',
+      'Currently working on Core Java, OOP, JDBC, Spring Boot, REST APIs and MySQL in a professional remote environment.',
     skills: ['Core Java', 'OOP', 'JDBC', 'Spring Boot', 'REST APIs', 'MySQL'],
   },
   {

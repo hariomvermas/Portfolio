@@ -198,7 +198,8 @@
 .navbar__mobile-link.navbar__link--active .navbar__link-api   { color: var(--color-accent); }
 .navbar__mobile-link.navbar__link--active .navbar__link-label { color: var(--color-text); }
 
-@media (max-width: 768px) {
+/* 7 nav items need more room than the old 768px breakpoint allowed */
+@media (max-width: 900px) {
   .navbar__links     { display: none; }
   .navbar__hamburger { display: flex; }
   /* On mobile the desktop links margin-left: auto is gone, push actions right */

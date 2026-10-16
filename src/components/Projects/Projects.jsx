@@ -44,6 +44,13 @@ function ProjectCard({ project, index }) {
       onMouseMove={onMouseMove}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={onMouseLeave}
+      // Keyboard access: the card itself is focusable; focusing it opens the
+      // reveal panel so the Code/Live links become tabbable.
+      tabIndex={0}
+      onFocus={() => setHovered(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setHovered(false)
+      }}
       aria-label={`Project: ${project.title}`}
     >
       {/* ── Resting layer — always visible ── */}

@@ -17,9 +17,13 @@ const fadeUp = (delay = 0) => ({
 //     headers: { 'Content-Type': 'application/json' },
 //     body: JSON.stringify(data),
 //   })
+// Until the backend exists, this only opens the visitor's email app with the
+// message pre-filled. It does NOT send anything, so the UI must not say "sent".
 async function sendMessage(data) {
   const subject = encodeURIComponent(`Portfolio contact from ${data.name}`)
-  const body    = encodeURIComponent(`Name: ${data.name}\n\n${data.message}`)
+  const body    = encodeURIComponent(
+    `Name: ${data.name}\nReply-to: ${data.email}\n\n${data.message}`
+  )
   window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
   return { ok: true }
 }
@@ -111,7 +115,11 @@ export default function Contact() {
             {status === 'sent' ? (
               <div className="contact__success" role="status">
                 <FiCheckCircle size={32} aria-hidden="true" />
-                <p>Message sent! I'll get back to you soon.</p>
+                <p>
+                  Your email app should have opened with the message ready to send.
+                  If nothing opened, write to me directly at{' '}
+                  <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+                </p>
               </div>
             ) : (
               <>

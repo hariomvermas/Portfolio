@@ -42,10 +42,11 @@ npm run preview    # preview the production build locally
 
 ## Connecting to Spring Boot later
 
-All data access is isolated in `src/api/`. To swap static data for your REST API:
+Right now every section imports its data straight from `src/data/*.js`. `src/api/projects.js` exists as a starting point but **no component calls it yet**. To move to a REST API:
 
 1. Set `VITE_API_BASE_URL=http://localhost:8080` in a `.env.local` file.
-2. Open `src/api/projects.js` and uncomment the `fetch` implementation (the TODO block is already there).
-3. Create matching files `src/api/experience.js`, `src/api/certificates.js`, etc., following the same pattern.
-4. Your Spring Boot endpoints should match: `GET /api/projects`, `GET /api/experience`, `POST /api/contact`, etc.
-5. For the contact form, open `src/components/Contact/Contact.jsx` and replace the `sendMessage` function with the `fetch POST` call shown in the TODO comment block already in that file.
+2. In `src/api/projects.js`, replace the static return with the `fetch` implementation (the TODO block is already there).
+3. In `src/components/Projects/Projects.jsx`, stop importing `data/projects.js` and load projects with `getProjects()` inside a `useEffect` (with loading and error states).
+4. Create matching files `src/api/experience.js`, `src/api/certificates.js`, etc., following the same pattern.
+5. Your Spring Boot endpoints should match: `GET /api/projects`, `GET /api/experience`, `POST /api/contact`, etc.
+6. For the contact form (today it only opens the visitor's email app, it does not send anything), open `src/components/Contact/Contact.jsx` and replace the `sendMessage` function with the `fetch POST` call shown in the TODO comment block already in that file.
