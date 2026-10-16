@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FiMail, FiGithub, FiLinkedin, FiSend, FiCheckCircle } from 'react-icons/fi'
+import { FiMail, FiGithub, FiLinkedin, FiSend } from 'react-icons/fi'
 import profile from '../../data/profile.js'
 import links from '../../data/links.js'
 import { useScrollReveal } from '../../hooks/useScrollReveal.js'
@@ -55,8 +55,9 @@ export default function Contact() {
     setStatus('sending')
     try {
       await sendMessage(form)
-      setStatus('sent')
-      setForm({ name: '', email: '', message: '' })
+      // Only the visitor's email app was opened. We cannot know if they pressed
+      // Send there, so never claim success and keep their text in the form.
+      setStatus('opened')
     } catch {
       setStatus('error')
     }
@@ -112,16 +113,6 @@ export default function Contact() {
             animate={isInView ? 'show' : 'hidden'}
             aria-label="Contact form"
           >
-            {status === 'sent' ? (
-              <div className="contact__success" role="status">
-                <FiCheckCircle size={32} aria-hidden="true" />
-                <p>
-                  Your email app should have opened with the message ready to send.
-                  If nothing opened, write to me directly at{' '}
-                  <a href={`mailto:${profile.email}`}>{profile.email}</a>.
-                </p>
-              </div>
-            ) : (
               <>
                 <div className="contact__row">
                   <div className="contact__field">
@@ -164,11 +155,18 @@ export default function Contact() {
                   <p className="contact__error" role="alert">Something went wrong. Please email me directly.</p>
                 )}
 
+                {status === 'opened' && (
+                  <p className="contact__note" role="status">
+                    Your email app was opened with this message filled in. It is only
+                    sent once you press Send there. If nothing opened, write to me at{' '}
+                    <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+                  </p>
+                )}
+
                 <button type="submit" className="btn btn--primary contact__submit" disabled={status === 'sending'}>
                   {status === 'sending' ? 'Sending…' : <><FiSend size={15} aria-hidden="true" /> Send Message</>}
                 </button>
               </>
-            )}
           </motion.form>
         </div>
       </div>
