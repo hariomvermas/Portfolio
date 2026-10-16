@@ -237,9 +237,11 @@
   border-left: 2px solid var(--color-accent);
 }
 
-/* Bottom-right corner */
+/* Bottom-right corner — mirrors the top-left one (-6px outside the photo corner).
+   It also lines up with the corner of the offset amber fill behind the photo.
+   The badge is centred, so it never reaches this corner. */
 .hero__corner--br {
-  bottom: 20px; /* above badge */
+  bottom: -6px;
   right: -6px;
   border-bottom: 2px solid var(--color-accent);
   border-right: 2px solid var(--color-accent);
