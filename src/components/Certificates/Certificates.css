@@ -83,7 +83,7 @@
 }
 
 .cert-card__badge--score {
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   border-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
   background: var(--color-accent-glow);
 }
@@ -94,7 +94,7 @@
   gap: 4px;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   text-decoration: none;
   white-space: nowrap;
   /* Minimum tap target */

@@ -10,10 +10,11 @@
 
   --color-text:        #f0e6d3;   /* warm cream */
   --color-text-muted:  #8a7f72;
-  --color-text-faint:  #4a4540;
+  --color-text-faint:  #90867b;   /* ≥4.5:1 on every dark surface (WCAG AA) */
 
-  --color-accent:      #f5a623;   /* warm amber */
-  --color-accent-dim:  #c47d0e;
+  --color-accent:        #f5a623; /* warm amber */
+  --color-accent-strong: #f5a623; /* AA-safe amber for small text */
+  --color-accent-dim:    #c47d0e;
   --color-accent-glow: rgba(245, 166, 35, 0.15);
 
   /* Fonts */
@@ -90,10 +91,11 @@
 
   --color-text:        #1a1612;
   --color-text-muted:  #6b5f52;
-  --color-text-faint:  #a89880;
+  --color-text-faint:  #6a6052;   /* ≥4.5:1 on every light surface (WCAG AA) */
 
-  --color-accent:      #c47d0e;
-  --color-accent-dim:  #9a6008;
+  --color-accent:        #c47d0e;
+  --color-accent-strong: #7d4e09; /* darker amber: ≥4.5:1 even on amber-glow chip bg */
+  --color-accent-dim:    #9a6008;
   --color-accent-glow: rgba(196, 125, 14, 0.12);
 
   --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.08);
@@ -166,7 +168,7 @@ a:hover {
 .section-label {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: var(--space-3);

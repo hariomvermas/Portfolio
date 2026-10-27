@@ -83,7 +83,7 @@
   color: var(--color-text-muted);
 }
 
-.edu-card__cgpa { color: var(--color-accent); }
+.edu-card__cgpa { color: var(--color-accent-strong); }
 
 .edu-card__cgpa-note {
   color: var(--color-text-faint);

@@ -26,7 +26,7 @@
 .skills__group-label {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: var(--space-4);
@@ -51,7 +51,7 @@
   cursor: default;
 }
 .skills__chip:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   border-color: var(--color-accent);
   background: var(--color-accent-glow);
 }

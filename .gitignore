@@ -2,8 +2,18 @@ node_modules
 dist
 .env
 .env.local
+.env.*.local
 .DS_Store
 *.log
-
+*.patch
 
 PORTFOLIO_SPEC.md
+
+# ADCode workspace files
+.adcode/
+
+# Backend build output and IDE files (backend/.gitignore covers its own,
+# these catch stray files at the root)
+backend/target/
+backend/.idea/
+*.iml

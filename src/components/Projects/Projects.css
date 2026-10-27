@@ -63,7 +63,7 @@
 .project-card__endpoint {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   background: var(--color-accent-glow);
   border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
   border-radius: var(--radius-full);
@@ -121,7 +121,7 @@
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
 .project-card:hover .project-card__hint {
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   transform: translate(3px, -3px);
 }
 
@@ -167,7 +167,7 @@
 .project-card__tech-chip {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   background: var(--color-accent-glow);
   border: 1px solid color-mix(in srgb, var(--color-accent) 22%, transparent);
   border-radius: var(--radius-full);

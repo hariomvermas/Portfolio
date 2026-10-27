@@ -33,7 +33,7 @@
   gap: var(--space-3);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   text-decoration: none;
   /* Prevent long email from overflowing */
   overflow-wrap: break-word;
@@ -66,7 +66,7 @@
   transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 .contact__social-link:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   border-color: var(--color-accent);
   text-decoration: none;
 }
@@ -148,7 +148,7 @@
 }
 .contact__submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-/* ── Success ── */
+/* ── Success (real save via the API) ── */
 .contact__success {
   display: flex;
   flex-direction: column;
@@ -162,6 +162,26 @@
   border-radius: var(--radius-xl);
 }
 .contact__success p { color: var(--color-text-muted); font-size: var(--text-base); }
+.contact__success-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+}
+.contact__again { margin-top: var(--space-2); }
+
+/* ── Message label + character counter ── */
+.contact__label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.contact__counter {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+.contact__counter--limit { color: #f87171; }
 
 /* ── 900px — collapse to single column ── */
 @media (max-width: 900px) {
@@ -179,4 +199,5 @@
 /* ── 390px — tighten form padding ── */
 @media (max-width: 390px) {
   .contact__success { padding: var(--space-8); }
+  .contact__success-title { font-size: var(--text-xl); }
 }
