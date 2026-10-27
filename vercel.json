@@ -1,5 +1,4 @@
 {
-  "$comment": "Forwards every /api/* request to the deployed Spring Boot backend (Render) so the frontend keeps calling same-origin URLs — no CORS involved. Backend: https://github.com/hariomvermas/Portfolio-backend, health check: /api/contact/health. Note: Render's free tier sleeps after ~15 min idle, so the first request can take ~50 s to wake — if a contact submit fails once, retry.",
   "rewrites": [
     { "source": "/api/:path*", "destination": "https://portfolio-backend-cyqz.onrender.com/api/:path*" }
   ]
